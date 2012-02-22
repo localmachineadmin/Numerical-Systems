@@ -16,9 +16,12 @@ int main(void)
 	int nsteps = 10;
 	double source = 0;
 	double noise = 0.99;
-	
+	int nx;
 	//set problem size. set ny=nz=nx for testing purposes
-	int nx = 500;
+	printf("set problem size (nx=ny=nz):\n");
+	scanf("%d", &nx);
+
+	
 	int ny = nx;
 	int nz = nx;
 	
@@ -56,11 +59,11 @@ int main(void)
 	      for (k=1; k<=nz; k++) 
 		  {
 			matT[i][j][k] = exp(
-				exp(-pow(5*vecX[i]-2.5,2))*
-				exp(-pow(5*vecY[j]-2.5,2))*
-				exp(-pow(5*vecZ[k]-2.5,2))
-				) 
-				* (noise+(rand()%10)/1000);
+								exp(-pow(5*vecX[i]-2.5,2))*
+								exp(-pow(5*vecY[j]-2.5,2))*
+								exp(-pow(5*vecZ[k]-2.5,2))
+								) 
+								* (noise+(rand()%10)/1000);
 	      }
 
 	//set initial boundary conditions
@@ -78,14 +81,14 @@ int main(void)
 				for (k=2; k<nz; k++)
 				{
 					matTnew[i][j][k] = 	matT[i][j][k]
-						+ Cx*
-						(
-						matT[i-1][j][k]+ matT[i+1][j][k]
-						+ matT[i][j-1][k]+ matT[i][j+1][k]
-						+ matT[i][j][k-1]+ matT[i][j][k+1]
-						- 6*matT[i][j][k]
-						)
-						+ source;
+										+ Cx*
+										(
+											matT[i-1][j][k]+ matT[i+1][j][k]
+											+ matT[i][j-1][k]+ matT[i][j+1][k]
+											+ matT[i][j][k-1]+ matT[i][j][k+1]
+											- 6*matT[i][j][k]
+										)
+										+ source;
 				}
 						
 	//set boundary
