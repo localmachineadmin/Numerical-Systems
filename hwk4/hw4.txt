@@ -1,0 +1,30 @@
+CSPP58001 Numerical Methods
+Prof. Andrew Siegel
+TA: Kyle Gerard Felker
+Winter '12
+----------------------------------
+Homework #4 (v0.02)
+Due Friday, March 16th, 11:59 PM
+
+Create a multigrid solver (FMA) for the 3-D time-dependent heat equation
+with source term using the Backward Euler (BE) discretization. It is understood
+that you will closely follow the class code (adapted from NR) for the 2-D
+steady state heat equation with source. A few changes will need to be made:
+all routines will have to be changed from 2d to 3d; the relax, resid, and slvsml
+routines will all have to be changed (very slightly) to solve the BE
+matrix at a timestep. (50 pts)
+
+Show a plot of performance results as a function of problem size vs. SOR for
+problems of size 32^3, 64^3, 128^3 and 256^3 (if SOR is taking too
+long don't bother waiting). To standardize the results, use 2 V cycles
+and 2 pre and post sweeps for these tests. (20 pts)
+
+Compare FMA vs. FMA for three different choices of relaxation scheme: Jacobi, Gauss-Seidel,
+and Gauss-Seidel with Red-Black ordering. (10 pts each)
+
+Possible extra credit points: 
+ - use Crank Nicholson in addition to backward Euler. 
+ - compare results for cubic interpolation vs. trilinear 
+ - compare results for "direct injection" restriction (simply copy fine points
+   to coarse at corresponding grid locations). Make sure you measure
+   the error and compare run time to get to equivalent error level. 
