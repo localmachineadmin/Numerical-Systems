@@ -1,5 +1,5 @@
 main : main.o mglin.o addint.o relax.o resid.o rstrc.o interp.o nrutil.o slvsml.o
-	gcc -O3 -o main main.o mglin.o addint.o relax.o resid.o rstrc.o interp.o nrutil.o slvsml.o
+	gcc -O3 -lm -o main main.o mglin.o addint.o relax.o resid.o rstrc.o interp.o nrutil.o slvsml.o
 main.o : main.c nrutil.h
 	gcc -c -I. main.c
 mglin.o : mglin.c nrutil.h mg.h
